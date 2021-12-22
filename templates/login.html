@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<center>
+<div class="login">
+    <div id="header">
+        <h3>Log in KlemOil Tech Admin</h3>
+    </div>
+
+    <form action="" method="POST" class="form">
+    {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Log in">
+    </form>
+</div>
+</center>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="section">
+    <h3 class="heading">Add Sales</h3>
+    <a href="{% url 'salesList' %}">Back < </a>
+
+    <form action="" method="post" class="search-form">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit" value="Add Sale" id="btn btn-primary">
+
+    </form>
+</div>
+
+{% endblock content %}

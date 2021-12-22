@@ -1,0 +1,48 @@
+<div class="account">
+    <div class="account-top">
+        <h4>KlemOil Tech Inno Ltd</h4>
+        <p>No 4 Edeh strret by Ogbumnabali Rd</p>
+        <p>Port-Harcourt, Nigeria</p>
+
+        <h2>STATEMENT OF ACCOUNT</h2>
+    </div>
+
+    <div class="customer-address">
+        <h4>{{sale.customer_name}}</h4>
+        <p>Customer Address</p>
+    </div>
+
+    <div class="account-body">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                {% comment %} <th scope="col">S/N</th> {% endcomment %}
+                <th scope="col">Customer Name</th>
+                <th scope="col">Item Purchased</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col">Have Paid</th>
+                <th scope="col">Date Purchased</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                    {% comment %} <th scope="row">{{sale.id}}</th> {% endcomment %}
+                    <td><strong>{{sales.customer_name}}</strong></td>
+                    <td>{{sales.item_purchased}}</td>
+                    <td>{{sales.quantity}}</td>
+                    <td>{{sales.total_price}}</td>
+                    <td>{{sales.payment_method}}</td>
+                    {% if sales.have_paid %}
+                    <td style="color: green;">{{sales.have_paid}}</td>
+                    {% else %}
+                    <td style="color: red;">{{sales.have_paid}}</td>
+                    {% endif %}
+                    <td>{{sales.date_purchased}}</td>
+                    <td>{{sales.date_paid}}</td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

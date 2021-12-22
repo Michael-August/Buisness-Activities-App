@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="section">
+  <h3 class="heading">KlemOil Tech Daily Sales Record</h3>
+
+  <div class="btn-list">
+    <p class="btn"><a href="{% url 'addsales' %}">Add sales</a></p>
+    <p class="btn search"><a href="{% url 'filtersales' %}">Search</a></p>
+  </div>
+
+  <center>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        {% comment %} <th scope="col">S/N</th> {% endcomment %}
+        <th scope="col">Customer Name</th>
+        <th scope="col">Item Purchased</th>
+        <th scope="col">Item Rate</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+        <th scope="col">Payment Method</th>
+        <th scope="col">Have Paid</th>
+        <th scope="col">Date Purchased</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for sale in sales %}
+    <tbody>
+      <tr>
+      {% comment %} <th scope="row">{{sale.id}}</th> {% endcomment %}
+      <td id="name"><strong><a href="{% url 'salesUpdate' sale.id %}">{{sale.customer_name}}</a></strong></td>
+      <td>{{sale.item_purchased}}</td>
+      <td>{{sale.rate}}</td>
+      <td>{{sale.quantity}}</td>
+      <td>{{sale.total_price}}</td>
+      <td>{{sale.payment_method}}</td>
+      {% if sale.have_paid %}
+      <td style="color: #28a745;">{{sale.have_paid}}</td>
+      {% else %}
+      <td style="color: #dc3545;">{{sale.have_paid}}</td>
+      {% endif %}
+      <td>{{sale.date_purchased}}</td>
+      <td style="color: red; font-weight: 900; font-size: 2.5rem; cursor: pointer;"><a style="color: red; text-decoration: none;" href="{% url 'salesDelete' sale.id %}">&#215;</a></td>
+      </tr>
+    </tbody>
+    {% empty %}
+      <h2>No Items in Sales Yet</h2>
+    {% endfor %}
+  </table>
+  </center>
+</div>
+
+{% endblock content %}
